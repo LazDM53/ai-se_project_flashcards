@@ -1,4 +1,4 @@
-import { decks } from "./decks.js";
+import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
@@ -103,15 +103,11 @@ function handleRoute() {
       return;
     }
 
-    const deck = currentDecks.find((d) => d.id === deckId);
+    const currentDeck = getDeckByID(deckId);
+    const deckStillExists = currentDecks.some((deck) => deck.id === deckId);
 
-    if (deck) {
-      decksSection.style.display = "none";
-      carouselSection.style.display = "flex";
-      notFoundSection.style.display = "none";
-      aboutSection.style.display = "none";
-
-      renderCarouselView(deck);
+    if (currentDeck && deckStillExists) {
+      renderCarouselView(currentDeck);
     } else {
       showNotFound();
     }

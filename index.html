@@ -53,7 +53,7 @@
         </div>
       </section>
 
-      <section id="about" class="about" style="display: none">
+      <section id="about" class="about">
         <h2 class="about__title">About</h2>
         <p class="about__text">
           This flashcard app helps you study and memorize information
@@ -62,41 +62,53 @@
         </p>
       </section>
 
-      <section class="carousel" style="display: none">
+      <section class="carousel">
         <h2 class="carousel__title"></h2>
 
-        <div class="carousel__card">
-          <p class="carousel__card-text"></p>
-        </div>
-
-        <div class="carousel__controls">
+        <div class="carousel__content">
           <button
             class="carousel__btn carousel__btn_type_left"
             type="button"
             aria-label="Previous card"
           >
-            Prev
+            <img
+              src="./assets/images/left.svg"
+              alt=""
+              class="carousel__btn-icon"
+            />
           </button>
-          <button
-            class="carousel__btn carousel__btn_type_flip"
-            type="button"
-            aria-label="Flip card"
-          >
-            Flip
-          </button>
+
+          <div class="carousel__card">
+            <p class="carousel__card-text"></p>
+          </div>
+
           <button
             class="carousel__btn carousel__btn_type_right"
             type="button"
             aria-label="Next card"
           >
-            Next
+            <img
+              src="./assets/images/right.svg"
+              alt=""
+              class="carousel__btn-icon"
+            />
           </button>
         </div>
 
-        <a href="#home" class="carousel__back-link">← Go back</a>
+        <button
+          class="carousel__btn carousel__btn_type_flip"
+          type="button"
+          aria-label="Flip card"
+        >
+          <img
+            src="./assets/images/flip.svg"
+            alt=""
+            class="carousel__btn-icon"
+          />
+        </button>
       </section>
 
-      <section id="not-found" class="not-found" style="display: none">
+      <section id="not-found" class="not-found">
         <p class="not-found__code">404</p>
         <h2 class="not-found__title">Page Not Found</h2>
         <p class="not-found__message">Oops! We can't find that page.</p>

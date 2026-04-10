@@ -1,4 +1,10 @@
+import { hexToString, removeColorClasses } from "./colorMap.js";
+
 let handleKeydown;
+
+function getCarouselTitleString(deck, currentIndex) {
+  return `${deck.name} · ${currentIndex + 1}/${deck.cards.length}`;
+}
 
 function renderCarouselView(deck) {
   const decksSection = document.querySelector(".decks");
@@ -24,28 +30,23 @@ function renderCarouselView(deck) {
   const nextBtn = carouselSection.querySelector(".carousel__btn_type_right");
   const flipBtn = carouselSection.querySelector(".carousel__btn_type_flip");
 
-  titleEl.textContent = deck.name;
-
-  let counterEl = carouselSection.querySelector(".carousel__counter");
-
-  if (!counterEl) {
-    counterEl = document.createElement("p");
-    counterEl.className = "carousel__counter";
-    titleEl.after(counterEl);
-  }
-
   function updateDisplay() {
     const currentCard = deck.cards[currentIndex];
 
+    titleEl.textContent = getCarouselTitleString(deck, currentIndex);
+
+    removeColorClasses(cardEl);
+
+    const deckColor = hexToString(deck.color);
+    cardEl.classList.add(`carousel__card_color_${deckColor}`);
+
     if (showingQuestion) {
       cardTextEl.textContent = currentCard.question;
-      cardEl.style.backgroundColor = deck.color;
+      cardEl.classList.remove("carousel__card_color_white");
     } else {
       cardTextEl.textContent = currentCard.answer;
-      cardEl.style.backgroundColor = "#ffffff";
+      cardEl.classList.add("carousel__card_color_white");
     }
-
-    counterEl.textContent = `Card ${currentIndex + 1} of ${deck.cards.length}`;
 
     prevBtn.disabled = currentIndex === 0;
     prevBtn.classList.toggle("carousel__btn_disabled", currentIndex === 0);
