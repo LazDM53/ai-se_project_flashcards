@@ -26,3 +26,7 @@ I built this app to practice front-end development skills like DOM manipulation 
 - Fixed event duplication issue in carousel
 - Imporved routing to prevent 404 errors
 - Corrected carousel layout
+
+## Deployed Site
+
+Check out [this site](https://lazdm53.github.io/ai-se_project_flashcards/) on GitHub Pages.
