@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.header__link:hover {
+  text-decoration: underline;
+}
