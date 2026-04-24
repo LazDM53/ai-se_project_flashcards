@@ -3,9 +3,9 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
 // DOM Elements
-const deckList = document.querySelector(".decks__list");
+const galleryList = document.querySelector(".gallery__list");
 const deckTemplate = document.getElementById("deck-template");
-const decksSection = document.querySelector(".decks");
+const gallerySection = document.querySelector(".gallery");
 const carouselSection = document.querySelector(".carousel");
 const notFoundSection = document.querySelector("#not-found");
 const aboutSection = document.querySelector("#about");
@@ -17,17 +17,17 @@ let currentDecks = [...decks];
 // ----------------------
 function createDeckEl(deck) {
   const deckEl = deckTemplate.content.cloneNode(true);
-  const li = deckEl.querySelector(".deck");
+  const li = deckEl.querySelector(".card");
 
   removeColorClasses(li);
 
   const colorName = hexToString(deck.color) || "green";
-  li.classList.add(`deck_color_${colorName}`);
+  li.classList.add(`card_color_${colorName}`);
 
-  li.querySelector(".deck__title").textContent = deck.name;
-  li.querySelector(".deck__count").textContent = `${deck.cards.length} cards`;
+  li.querySelector(".card__title").textContent = deck.name;
+  li.querySelector(".card__count").textContent = `${deck.cards.length} cards`;
 
-  const deleteBtn = li.querySelector(".deck__delete-btn");
+  const deleteBtn = li.querySelector(".card__delete-btn");
   deleteBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
@@ -40,7 +40,7 @@ function createDeckEl(deck) {
     }
   });
 
-  const linkEl = li.querySelector(".deck__link");
+  const linkEl = li.querySelector(".card__link");
   linkEl.href = `#carousel/${deck.id}`;
   linkEl.setAttribute("aria-label", `Open deck: ${deck.name}`);
 
@@ -48,10 +48,10 @@ function createDeckEl(deck) {
 }
 
 function renderAllDecks() {
-  deckList.innerHTML = "";
+  galleryList.innerHTML = "";
   currentDecks.forEach((deck) => {
     const deckEl = createDeckEl(deck);
-    deckList.prepend(deckEl);
+    galleryList.prepend(deckEl);
   });
 }
 
@@ -59,21 +59,21 @@ function renderAllDecks() {
 // Show / Hide Sections
 // ----------------------
 function showDeckList() {
-  decksSection.style.display = "block";
+  gallerySection.style.display = "block";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   aboutSection.style.display = "none";
 }
 
 function showAbout() {
-  decksSection.style.display = "none";
+  gallerySection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   aboutSection.style.display = "block";
 }
 
 function showNotFound() {
-  decksSection.style.display = "none";
+  gallerySection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "block";
   aboutSection.style.display = "none";

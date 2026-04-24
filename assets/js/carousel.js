@@ -7,12 +7,12 @@ function getCarouselTitleString(deck, currentIndex) {
 }
 
 function renderCarouselView(deck) {
-  const decksSection = document.querySelector(".decks");
+  const gallerySection = document.querySelector(".gallery");
   const carouselSection = document.querySelector(".carousel");
   const notFoundSection = document.querySelector("#not-found");
   const aboutSection = document.querySelector("#about");
 
-  decksSection.style.display = "none";
+  gallerySection.style.display = "none";
   carouselSection.style.display = "flex";
   notFoundSection.style.display = "none";
 

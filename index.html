@@ -42,13 +42,15 @@
     </header>
 
     <main class="page__main-content">
-      <section class="decks">
-        <h2 class="decks__title">My Decks</h2>
+      <section class="gallery">
+        <h2 class="gallery__title">My Decks</h2>
 
         <div class="wrapping-row">
-          <ul class="decks__list wrapping-row__display-contents"></ul>
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
 
-          <button class="decks__new-decks-btn" type="button">+ New Deck</button>
+          <button class="gallery__new-card-btn" type="button">
+            + New Card
+          </button>
         </div>
       </section>
 
@@ -120,13 +122,13 @@
     </footer>
 
     <template id="deck-template">
-      <li class="deck deck_color_green">
-        <a href="#" class="deck__link" aria-label="Open deck"></a>
-        <h3 class="deck__title"></h3>
-        <div class="deck__row">
-          <p class="deck__count"></p>
+      <li class="card card_color_green">
+        <a href="#" class="card__link" aria-label="Open deck"></a>
+        <h3 class="card__title"></h3>
+        <div class="card__row">
+          <p class="card__count"></p>
           <button
-            class="deck__delete-btn"
+            class="card__delete-btn"
             type="button"
             aria-label="Delete this deck"
           ></button>
