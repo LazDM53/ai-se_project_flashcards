@@ -1,15 +1,3 @@
-.gallery__title {
-  margin: 0 0 40px;
-  font-size: 40px;
-  font-weight: 700;
-}
-
-.gallery__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .card {
   width: 100%;
   max-width: 325px;
@@ -88,23 +76,21 @@
   margin: 0;
 }
 
-.gallery__new-card-btn {
-  margin-top: 0;
-  padding: 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: 700;
-  color: #1a1a1a80;
-  background-color: #d9d9d9;
-  display: flex;
-  align-items: flex-start;
-  width: 325px;
-  height: 205px;
+.card_color_white {
+  background-color: #fff;
 }
 
-.gallery__new-card-btn:hover {
-  background-color: #c5c5c5;
-  color: #1a1a1a;
+.card__flip-btn {
+  width: 24px;
+  height: 24px;
+  background: url("../images/flip.svg") center no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.card__flip-btn:hover {
+  opacity: 1;
 }

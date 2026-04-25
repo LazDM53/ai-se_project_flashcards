@@ -1,0 +1,66 @@
+.gallery {
+  display: none;
+}
+
+.gallery__title {
+  margin: 0 0 40px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.gallery__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.gallery__header .gallery__title {
+  margin: 0;
+}
+
+.gallery__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery__new-card-btn {
+  margin-top: 0;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a80;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: flex-start;
+  width: 325px;
+  height: 205px;
+}
+
+.gallery__new-card-btn:hover {
+  background-color: #c5c5c5;
+  color: #1a1a1a;
+}
+
+.gallery__practice-btn {
+  border: none;
+  border-radius: 100px;
+  padding: 12px 24px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gallery__practice-btn:hover {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15)
+  );
+  background-blend-mode: overlay;
+}

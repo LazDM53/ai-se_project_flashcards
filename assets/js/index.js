@@ -1,11 +1,15 @@
+import { renderDeckView } from "./deckView.js";
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
 // DOM Elements
-const galleryList = document.querySelector(".gallery__list");
+const homeSection = document.querySelector(".gallery");
+const homeGalleryList = homeSection.querySelector(".gallery__list");
+
+const deckViewSection = document.querySelector("#deck-view");
+
 const deckTemplate = document.getElementById("deck-template");
-const gallerySection = document.querySelector(".gallery");
 const carouselSection = document.querySelector(".carousel");
 const notFoundSection = document.querySelector("#not-found");
 const aboutSection = document.querySelector("#about");
@@ -41,42 +45,49 @@ function createDeckEl(deck) {
   });
 
   const linkEl = li.querySelector(".card__link");
-  linkEl.href = `#carousel/${deck.id}`;
+  linkEl.href = `#deck/${deck.id}`;
   linkEl.setAttribute("aria-label", `Open deck: ${deck.name}`);
 
   return deckEl;
 }
 
 function renderAllDecks() {
-  galleryList.innerHTML = "";
+  homeGalleryList.innerHTML = "";
   currentDecks.forEach((deck) => {
     const deckEl = createDeckEl(deck);
-    galleryList.prepend(deckEl);
+    homeGalleryList.prepend(deckEl);
   });
 }
 
 // ----------------------
 // Show / Hide Sections
 // ----------------------
-function showDeckList() {
-  gallerySection.style.display = "block";
+function hideAllSections() {
+  homeSection.style.display = "none";
+  deckViewSection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   aboutSection.style.display = "none";
 }
 
+function showDeckList() {
+  hideAllSections();
+  homeSection.style.display = "block";
+}
+
+function showDeckView() {
+  hideAllSections();
+  deckViewSection.style.display = "block";
+}
+
 function showAbout() {
-  gallerySection.style.display = "none";
-  carouselSection.style.display = "none";
-  notFoundSection.style.display = "none";
+  hideAllSections();
   aboutSection.style.display = "block";
 }
 
 function showNotFound() {
-  gallerySection.style.display = "none";
-  carouselSection.style.display = "none";
+  hideAllSections();
   notFoundSection.style.display = "block";
-  aboutSection.style.display = "none";
 }
 
 // ----------------------
@@ -95,6 +106,18 @@ function handleRoute() {
     return;
   }
 
+  if (hash.startsWith("deck/")) {
+    const [, deckId] = hash.split("/");
+    const currentDeck = currentDecks.find((deck) => deck.id === deckId);
+
+    if (currentDeck) {
+      renderDeckView(currentDeck, showDeckView);
+    } else {
+      showNotFound();
+    }
+
+    return;
+  }
   if (hash.startsWith("carousel/")) {
     const [, deckId] = hash.split("/");
 
