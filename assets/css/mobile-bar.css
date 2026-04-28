@@ -1,0 +1,28 @@
+@media screen and (max-width: 600px) {
+  .gallery::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(to top, #ececec 35%, rgba(236, 236, 236, 0));
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .gallery__new-card-btn {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    width: auto;
+    height: 56px;
+    aspect-ratio: auto;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    z-index: 10;
+  }
+}
