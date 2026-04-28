@@ -12,24 +12,39 @@
   text-align: center;
 }
 
-.carousel__content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.carousel__grid {
+  display: grid;
+  grid-template-areas:
+    "left card right"
+    ". flip .";
+  grid-template-columns: 52px minmax(0, 620px) 52px;
   gap: 20px;
+  align-items: center;
+}
+
+.carousel__btn_type_left {
+  grid-area: left;
+  justify-self: end;
 }
 
 .carousel__card {
+  grid-area: card;
   width: 100%;
   max-width: 620px;
   min-height: 320px;
   border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  box-sizing: border-box;
   text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.carousel__btn_type_right {
+  grid-area: right;
+  justify-self: start;
 }
 
 .carousel__card_color_green {
@@ -61,10 +76,13 @@
 }
 
 .carousel__card-text {
+  max-width: 100%;
   margin: 0;
   font-size: 28px;
   font-weight: 700;
   line-height: 1.2;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .carousel__btn {
@@ -80,6 +98,13 @@
   padding: 0;
 }
 
+.carousel__btn_type_flip {
+  grid-area: flip;
+  justify-self: center;
+  width: 60px;
+  height: 60px;
+}
+
 .carousel__btn:hover {
   opacity: 0.8;
 }
@@ -90,12 +115,55 @@
   cursor: not-allowed;
 }
 
-.carousel__btn_type_flip {
-  width: 60px;
-  height: 60px;
-}
-
 .carousel__btn-icon {
   width: 24px;
   height: 24px;
+}
+
+@media screen and (max-width: 760px) {
+  .carousel__grid {
+    grid-template-areas:
+      "card card card"
+      "left flip right";
+    grid-template-columns: 52px 1fr 52px;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .carousel__card {
+    max-width: none;
+    min-height: 300px;
+    padding: 32px;
+  }
+
+  .carousel__btn_type_left {
+    justify-self: end;
+  }
+
+  .carousel__btn_type_flip {
+    justify-self: center;
+  }
+
+  .carousel__btn_type_right {
+    justify-self: start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel {
+    align-items: stretch;
+  }
+
+  .carousel__title {
+    font-size: 20px;
+  }
+
+  .carousel__card {
+    min-height: 260px;
+    padding: 24px;
+  }
+
+  .carousel__card-text {
+    font-size: 24px;
+  }
 }

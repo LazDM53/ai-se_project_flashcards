@@ -4,6 +4,8 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
 // DOM Elements
+const page = document.querySelector(".page");
+
 const homeSection = document.querySelector(".gallery");
 const homeGalleryList = homeSection.querySelector(".gallery__list");
 
@@ -53,6 +55,7 @@ function createDeckEl(deck) {
 
 function renderAllDecks() {
   homeGalleryList.innerHTML = "";
+
   currentDecks.forEach((deck) => {
     const deckEl = createDeckEl(deck);
     homeGalleryList.prepend(deckEl);
@@ -72,21 +75,37 @@ function hideAllSections() {
 
 function showDeckList() {
   hideAllSections();
+
+  page.classList.remove("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
   homeSection.style.display = "block";
 }
 
 function showDeckView() {
   hideAllSections();
+
+  page.classList.remove("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
   deckViewSection.style.display = "block";
 }
 
 function showAbout() {
   hideAllSections();
+
+  page.classList.remove("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
   aboutSection.style.display = "block";
 }
 
 function showNotFound() {
   hideAllSections();
+
+  page.classList.add("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
   notFoundSection.style.display = "block";
 }
 
@@ -118,6 +137,7 @@ function handleRoute() {
 
     return;
   }
+
   if (hash.startsWith("carousel/")) {
     const [, deckId] = hash.split("/");
 

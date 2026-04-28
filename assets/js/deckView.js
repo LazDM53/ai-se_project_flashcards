@@ -41,6 +41,11 @@ function createCardEl(card, deck) {
 }
 
 function renderDeckView(deck, showDeckView) {
+  const page = document.querySelector(".page");
+
+  page.classList.remove("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
   deckViewTitle.textContent = deck.name;
   deckViewList.innerHTML = "";
 

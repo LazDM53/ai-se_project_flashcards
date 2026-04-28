@@ -11,6 +11,10 @@
     pointer-events: none;
   }
 
+  .page_no-mobile-bar::after {
+    display: none;
+  }
+
   .gallery__new-card-btn,
   .gallery__practice-btn {
     position: fixed;
@@ -60,5 +64,9 @@
     right: 20px;
     bottom: 20px;
     z-index: 20;
+  }
+
+  .page_location_carousel .footer {
+    position: static;
   }
 }

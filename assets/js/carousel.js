@@ -7,6 +7,7 @@ function getCarouselTitleString(deck, currentIndex) {
 }
 
 function renderCarouselView(deck) {
+  const page = document.querySelector(".page");
   const gallerySections = document.querySelectorAll(".gallery");
   const carouselSection = document.querySelector(".carousel");
   const notFoundSection = document.querySelector("#not-found");
@@ -17,6 +18,9 @@ function renderCarouselView(deck) {
   });
   carouselSection.style.display = "flex";
   notFoundSection.style.display = "none";
+
+  page.classList.add("page_no-mobile-bar");
+  page.classList.add("page_location_carousel");
 
   if (aboutSection) {
     aboutSection.style.display = "none";
@@ -39,7 +43,7 @@ function renderCarouselView(deck) {
 
     removeColorClasses(cardEl);
 
-    const deckColor = hexToString(deck.color);
+    const deckColor = hexToString(deck.color) || "green";
     cardEl.classList.add(`carousel__card_color_${deckColor}`);
 
     if (showingQuestion) {
