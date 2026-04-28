@@ -1,7 +1,6 @@
 .card {
   width: 100%;
-  max-width: 325px;
-  height: 205px;
+  aspect-ratio: 325 / 205;
   border-radius: 20px;
   padding: 20px;
   box-sizing: border-box;

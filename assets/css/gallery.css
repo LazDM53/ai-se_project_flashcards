@@ -37,8 +37,9 @@
   background-color: #d9d9d9;
   display: flex;
   align-items: flex-start;
-  width: 325px;
-  height: 205px;
+  width: 100%;
+  aspect-ratio: 325 / 205;
+  box-sizing: border-box;
 }
 
 .gallery__new-card-btn:hover {
@@ -63,4 +64,11 @@
     rgba(255, 255, 255, 0.15)
   );
   background-blend-mode: overlay;
+}
+
+@media screen and (max-width: 600px) {
+  .gallery__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
 }
