@@ -1,6 +1,6 @@
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
 }
 
@@ -8,6 +8,7 @@
   margin: 0;
   font-size: 24px;
   font-weight: 900;
+  justify-self: start;
 }
 
 .header__link {
@@ -19,10 +20,17 @@
   text-decoration: underline;
 }
 
+.nav {
+  justify-self: end;
+}
+
 @media screen and (max-width: 600px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 12px;
+  }
+
+  .header__title {
+    font-size: 20px;
   }
 }

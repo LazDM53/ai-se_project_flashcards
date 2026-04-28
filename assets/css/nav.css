@@ -16,3 +16,13 @@
 .nav__link:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+  .nav__links {
+    gap: 12px;
+  }
+
+  .nav__link {
+    font-size: 14px;
+  }
+}

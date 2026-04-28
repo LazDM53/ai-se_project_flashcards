@@ -1,28 +1,39 @@
 @media screen and (max-width: 600px) {
-  .gallery::after {
+  .page::after {
     content: "";
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 120px;
+    height: 200px;
     background: linear-gradient(to top, #ececec 35%, rgba(236, 236, 236, 0));
-    z-index: 5;
+    z-index: 10;
     pointer-events: none;
+  }
+
+  .footer {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20;
   }
 
   .gallery__new-card-btn {
     position: fixed;
     left: 20px;
     right: 20px;
-    bottom: 20px;
+    bottom: 76px;
     width: auto;
     height: 56px;
     aspect-ratio: auto;
-    border-radius: 100px;
+    border-radius: 8px;
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    z-index: 10;
+    font-weight: 500;
+    background: #1a1a1a;
+    color: #ffffff;
+    z-index: 30;
   }
 }

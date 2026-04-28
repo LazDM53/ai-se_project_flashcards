@@ -15,3 +15,12 @@
   flex-grow: 1;
   margin-bottom: 138px;
 }
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 20px;
+  }
+
+  .page__main-content {
+    margin-top: 32px;
+  }
+}
