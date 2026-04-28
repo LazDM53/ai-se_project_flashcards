@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
+  box-sizing: border-box;
+  min-height: 64px;
 }
 
 .header__title {
@@ -26,11 +28,11 @@
 
 @media screen and (max-width: 600px) {
   .header {
-    grid-template-columns: auto 1fr auto;
-    column-gap: 12px;
+    min-height: 64px;
+    gap: 12px;
   }
 
   .header__title {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
