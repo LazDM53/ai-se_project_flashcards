@@ -36,7 +36,6 @@ I built this app to strengthen front-end development skills such as DOM manipula
 
 - Added **open deck view** for browsing cards inside a deck
 - Implemented **practice mode carousel with flip functionality**
-- Added **confirmation modal** for deleting decks and cards
 - Built **fully responsive layout** (mobile + desktop)
 - Refactored carousel using **CSS Grid**
 - Fixed event duplication issues in carousel
