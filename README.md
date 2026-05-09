@@ -56,3 +56,8 @@ Check out the [live site](https://lazdm53.github.io/ai-se_project_flashcards/) o
 - Improve animations and transitions
 - Add editing functionality for decks and cards
 - Enhance accessibility (keyboard navigation, ARIA improvements)
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1B3ORAcCnLC1Bnk1pPJ5VStxnyLuBwSk8/view?usp=sharing), where I describe my
+project and some challenges I faced while building it.
