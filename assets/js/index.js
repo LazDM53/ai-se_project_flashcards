@@ -20,7 +20,7 @@ const newDeckSection = document.querySelector("#new-deck-view");
 
 const newDeckBtn = homeSection.querySelector(".gallery__new-card-btn");
 
-let currentDecks = [...decks];
+const currentDecks = decks;
 
 // ----------------------
 // Deck Rendering
@@ -42,7 +42,11 @@ function createDeckEl(deck) {
     evt.preventDefault();
     evt.stopPropagation();
 
-    currentDecks = currentDecks.filter((d) => d.id !== deck.id);
+    const deckIndex = currentDecks.findIndex((d) => d.id === deck.id);
+    if (deckIndex !== -1) {
+      currentDecks.splice(deckIndex, 1);
+    }
+
     renderAllDecks();
 
     if (window.location.hash === `#carousel/${deck.id}`) {
