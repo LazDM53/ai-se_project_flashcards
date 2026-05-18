@@ -16,6 +16,10 @@ const carouselSection = document.querySelector(".carousel");
 const notFoundSection = document.querySelector("#not-found");
 const aboutSection = document.querySelector("#about");
 
+const newDeckSection = document.querySelector("#new-deck-view");
+
+const newDeckBtn = homeSection.querySelector(".gallery__new-card-btn");
+
 let currentDecks = [...decks];
 
 // ----------------------
@@ -72,6 +76,7 @@ function showView(currentSection, displayValue) {
     carouselSection,
     notFoundSection,
     aboutSection,
+    newDeckSection,
   ];
 
   sections.forEach((section) => {
@@ -102,6 +107,13 @@ function showAbout() {
   showView(aboutSection, "block");
 }
 
+function showNewDeckView() {
+  page.classList.remove("page_no-mobile-bar");
+  page.classList.remove("page_location_carousel");
+
+  showView(newDeckSection, "block");
+}
+
 function showNotFound() {
   page.classList.add("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
@@ -122,6 +134,11 @@ function handleRoute() {
 
   if (hash === "about") {
     showAbout();
+    return;
+  }
+
+  if (hash === "new-deck-view") {
+    showNewDeckView();
     return;
   }
 
@@ -163,5 +180,10 @@ function handleRoute() {
 
 renderAllDecks();
 
+if (newDeckBtn) {
+  newDeckBtn.addEventListener("click", () => {
+    window.location.hash = "#new-deck-view";
+  });
+}
 window.addEventListener("hashchange", handleRoute);
 window.addEventListener("load", handleRoute);

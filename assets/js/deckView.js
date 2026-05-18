@@ -34,6 +34,11 @@ function createCardEl(card, deck) {
   });
 
   deleteBtn.addEventListener("click", () => {
+    const cardIndex = deck.cards.findIndex((c) => c.id === card.id);
+    if (cardIndex !== -1) {
+      deck.cards.splice(cardIndex, 1);
+    }
+
     li.remove();
   });
 

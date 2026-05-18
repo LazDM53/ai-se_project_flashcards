@@ -61,7 +61,89 @@
           efficiently. Create decks, flip through cards, and test your knowledge
           in a simple and interactive way.
         </p>
-      </section>
+<section class="new-deck-view" id="new-deck-view">
+  <h2 class="new-deck-view__title">New Deck</h2>
+
+  <form class="new-deck-view__form" id="new-deck-form">
+    <fieldset class="new-deck-view__colors">
+      <legend class="new-deck-view__legend">
+        Choose a color
+      </legend>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="green"
+        value="#64d583"
+        aria-label="Green"
+        checked
+      />
+      <label for="green"></label>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="blue"
+        value="#91a8f9"
+        aria-label="Blue"
+      />
+      <label for="blue"></label>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="orange"
+        value="#ee955e"
+        aria-label="Orange"
+      />
+      <label for="orange"></label>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="pink"
+        value="#ee92d7"
+        aria-label="Pink"
+      />
+      <label for="pink"></label>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="purple"
+        value="#aa8ef0"
+        aria-label="Purple"
+      />
+      <label for="purple"></label>
+
+      <input
+        type="radio"
+        name="deck-color"
+        id="yellow"
+        value="#f5d770"
+        aria-label="Yellow"
+      />
+      <label for="yellow"></label>
+    </fieldset>
+
+    <label class="new-deck-view__label">
+      Upload JSON
+
+      <textarea
+        class="new-deck-view__textarea"
+        placeholder="Paste JSON here..."
+      ></textarea>
+    </label>
+
+    <button
+      type="submit"
+      class="new-deck-view__submit-btn"
+      disabled
+    >
+      Create Deck
+    </button>
+  </form>
+</section>
 
       <section class="carousel">
         <h2 class="carousel__title"></h2>
