@@ -1,3 +1,4 @@
+import { disableSubmitBtn } from "./new-deck-view.js";
 import { renderDeckView } from "./deckView.js";
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
@@ -143,6 +144,7 @@ function handleRoute() {
 
   if (hash === "new-deck-view") {
     showNewDeckView();
+    disableSubmitBtn();
     return;
   }
 
