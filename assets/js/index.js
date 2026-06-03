@@ -1,3 +1,5 @@
+import { deleteDeck } from "./api.js";
+import { removeDeckByID } from "./decks.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { renderDeckView } from "./deckView.js";
 import { getDeckByID, fetchedDecks } from "./decks.js";
@@ -58,17 +60,29 @@ function createDeckEl(deck) {
     evt.preventDefault();
     evt.stopPropagation();
 
-    const deckIndex = currentDecks.findIndex((d) => d._id === deck._id);
+    deleteDeck(deck._id)
+      .then(() => {
+        // 1. remove from UI state
+        const index = currentDecks.findIndex((d) => d._id === deck._id);
 
-    if (deckIndex !== -1) {
-      currentDecks.splice(deckIndex, 1);
-    }
+        if (index !== -1) {
+          currentDecks.splice(index, 1);
+        }
 
-    renderAllDecks();
+        // 2. remove from fetched cache
+        removeDeckByID(deck._id);
 
-    if (window.location.hash === `#carousel/${deck._id}`) {
-      window.location.hash = "#home";
-    }
+        // 3. update UI
+        renderAllDecks();
+
+        // 4. fix navigation if user is inside deleted deck
+        if (window.location.hash === `#carousel/${deck._id}`) {
+          window.location.hash = "#home";
+        }
+      })
+      .catch(() => {
+        showError("Failed to delete deck");
+      });
   });
 
   const linkEl = li.querySelector(".card__link");
