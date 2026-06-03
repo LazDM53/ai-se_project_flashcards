@@ -2,10 +2,22 @@ import { hexToString, removeColorClasses } from "./colorMap.js";
 
 let handleKeydown;
 
+/**
+ * Builds the title shown above the carousel card.
+ *
+ * @param {Object} deck - The deck being displayed.
+ * @param {number} currentIndex - The currently visible card index.
+ * @returns {string} A human-readable carousel title.
+ */
 function getCarouselTitleString(deck, currentIndex) {
   return `${deck.name} · ${currentIndex + 1}/${deck.cards.length}`;
 }
 
+/**
+ * Renders the flashcard carousel view for a selected deck.
+ *
+ * @param {Object} deck - The deck whose cards should be shown in the carousel.
+ */
 function renderCarouselView(deck) {
   const page = document.querySelector(".page");
   const gallerySections = document.querySelectorAll(".gallery");
@@ -36,6 +48,9 @@ function renderCarouselView(deck) {
   const nextBtn = carouselSection.querySelector(".carousel__btn_type_right");
   const flipBtn = carouselSection.querySelector(".carousel__btn_type_flip");
 
+  /**
+   * Refreshes the currently visible card and button states.
+   */
   function updateDisplay() {
     const currentCard = deck.cards[currentIndex];
 
@@ -64,6 +79,11 @@ function renderCarouselView(deck) {
     );
   }
 
+  /**
+   * Moves the carousel to a specific card index.
+   *
+   * @param {number} index - The destination card index.
+   */
   function goToCard(index) {
     currentIndex = index;
     showingQuestion = true;

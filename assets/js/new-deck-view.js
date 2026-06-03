@@ -11,6 +11,12 @@ const errorMessage = document.querySelector(".modal__error");
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
+/**
+ * Normalizes a color value to a valid six-digit hexadecimal string.
+ *
+ * @param {string} color - The color value entered by the user.
+ * @returns {string} A normalized hex color string.
+ */
 function normalizeColor(color) {
   if (!color) return "#64d583";
 
@@ -21,6 +27,12 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+/**
+ * Validates a deck name against the supported length rules.
+ *
+ * @param {string} name - The deck name to validate.
+ * @returns {string|null} The original name when valid, otherwise null.
+ */
 function validateName(name) {
   if (typeof name != "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -29,6 +41,12 @@ function validateName(name) {
   return name;
 }
 
+/**
+ * Parses a JSON string and safely returns null on invalid input.
+ *
+ * @param {string} jsonString - The raw JSON text to parse.
+ * @returns {Object|null} Parsed object data, or null if parsing fails.
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -37,11 +55,19 @@ function parseJSON(jsonString) {
   }
 }
 
+/**
+ * Displays an error message in the modal dialog.
+ *
+ * @param {string} message - The error text to show the user.
+ */
 function showError(message) {
   errorMessage.textContent = message;
   errorModal.classList.add("modal_visible");
 }
 
+/**
+ * Hides the error modal dialog.
+ */
 function closeErrorModal() {
   errorModal.classList.remove("modal_visible");
 }
@@ -49,6 +75,9 @@ function closeErrorModal() {
 errorCloseBtn.addEventListener("click", closeErrorModal);
 
 // enables button (required by assignment)
+/**
+ * Re-enables the form submission button.
+ */
 function disableSubmitBtn() {
   submitBtn.disabled = false;
 }

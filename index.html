@@ -55,13 +55,37 @@
       </section>
 
       <section id="about" class="about">
-        <h2 class="about__title">About</h2>
-        <p class="about__text">
-          This flashcard app helps you study and memorize information
-          efficiently. Create decks, flip through cards, and test your knowledge
-          in a simple and interactive way.
-        </p>
-      </section>
+  <div class="about__container">
+
+    <h1 class="about__title">
+      About the Flash Cards App
+    </h1>
+
+    <div class="about__content">
+
+      <p class="about__text">
+        In this Flash Cards App, you can create your decks of cards to memorize study materials and practice them.
+        It’s a student project for the TripleTen AI-Assisted Software Engineering course.
+        <br><br>
+        When creating a deck of cards, you have to paste/type JSON following this schema:
+      </p>
+
+      <pre class="about__code">
+<code>{
+  "name": "Name",
+  "cards": [
+    {
+      "question": "Question?",
+      "answer": "Answer"
+    }
+  ]
+}</code>
+      </pre>
+
+    </div>
+
+  </div>
+</section>
       <section class="new-deck-view" id="new-deck-view">
         <h2 class="new-deck-view__title">New Deck</h2>
 

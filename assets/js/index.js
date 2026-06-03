@@ -30,6 +30,11 @@ let currentDecks = [];
 // ----------------------
 // Helpers
 // ----------------------
+/**
+ * Logs and displays a user-facing error message.
+ *
+ * @param {string} message - The error text to show.
+ */
 function showError(message) {
   console.error(message);
 
@@ -43,6 +48,12 @@ function showError(message) {
 // ----------------------
 // Deck Rendering
 // ----------------------
+/**
+ * Creates a deck card element for the home gallery.
+ *
+ * @param {Object} deck - The deck details to render.
+ * @returns {DocumentFragment} A cloned deck card fragment.
+ */
 function createDeckEl(deck) {
   const deckEl = deckTemplate.content.cloneNode(true);
   const li = deckEl.querySelector(".card");
@@ -92,6 +103,9 @@ function createDeckEl(deck) {
   return deckEl;
 }
 
+/**
+ * Renders every current deck card in the home gallery.
+ */
 function renderAllDecks() {
   homeGalleryList.innerHTML = "";
 
@@ -104,6 +118,12 @@ function renderAllDecks() {
 // ----------------------
 // Show / Hide Sections
 // ----------------------
+/**
+ * Shows one section and hides the rest of the page sections.
+ *
+ * @param {HTMLElement} currentSection - The section to reveal.
+ * @param {string} displayValue - The CSS display mode to apply.
+ */
 function showView(currentSection, displayValue) {
   const sections = [
     homeSection,
@@ -121,30 +141,45 @@ function showView(currentSection, displayValue) {
   currentSection.style.display = displayValue;
 }
 
+/**
+ * Shows the home deck list view.
+ */
 function showDeckList() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
   showView(homeSection, "block");
 }
 
+/**
+ * Shows the deck detail view.
+ */
 function showDeckView() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
   showView(deckViewSection, "block");
 }
 
+/**
+ * Shows the about page section.
+ */
 function showAbout() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
   showView(aboutSection, "block");
 }
 
+/**
+ * Shows the new deck creation view.
+ */
 function showNewDeckView() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
   showView(newDeckSection, "block");
 }
 
+/**
+ * Shows the not-found section for invalid routes.
+ */
 function showNotFound() {
   page.classList.add("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
@@ -154,6 +189,9 @@ function showNotFound() {
 // ----------------------
 // Router
 // ----------------------
+/**
+ * Resolves the current hash route and renders the matching page section.
+ */
 function handleRoute() {
   const hash = window.location.hash.slice(1);
 

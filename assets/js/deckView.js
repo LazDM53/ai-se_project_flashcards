@@ -6,6 +6,13 @@ const deckViewList = deckViewSection.querySelector(".gallery__list");
 const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
 const cardTemplate = document.getElementById("card-template");
 
+/**
+ * Creates a flashcard element for the deck view.
+ *
+ * @param {Object} card - The card data to render.
+ * @param {Object} deck - The parent deck that owns the card.
+ * @returns {DocumentFragment} A cloned card element fragment.
+ */
 function createCardEl(card, deck) {
   const cardEl = cardTemplate.content.cloneNode(true);
   const li = cardEl.querySelector(".card");
@@ -45,6 +52,12 @@ function createCardEl(card, deck) {
   return cardEl;
 }
 
+/**
+ * Renders the deck detail view and appends all cards for the selected deck.
+ *
+ * @param {Object} deck - The deck to display.
+ * @param {Function} showDeckView - Callback to reveal the deck view section.
+ */
 function renderDeckView(deck, showDeckView) {
   const page = document.querySelector(".page");
 

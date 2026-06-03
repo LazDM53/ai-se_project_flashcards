@@ -1,16 +1,38 @@
 .about {
-  display: none;
+  background: #ececec;
+  min-height: 100vh;
+  padding: 100px 40px 80px;
+}
+
+.about__container {
+  max-width: 670px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .about__title {
-  margin: 0 0 20px;
   font-size: 40px;
   font-weight: 700;
+  color: #1a1a1a;
 }
 
 .about__text {
-  margin: 0;
-  max-width: 700px;
   font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.35;
+  color: #1a1a1a;
+}
+
+.about__code {
+  background: rgba(26, 26, 26, 0.8);
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.about__code code {
+  font-family: monospace;
+  font-size: 14px;
 }
