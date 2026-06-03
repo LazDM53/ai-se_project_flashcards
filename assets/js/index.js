@@ -1,6 +1,7 @@
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { renderDeckView } from "./deckView.js";
-import { decks, getDeckByID } from "./decks.js";
+import { getDeckByID } from "./decks.js";
+import { getDecks } from "./api.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 
@@ -21,7 +22,8 @@ const newDeckSection = document.querySelector("#new-deck-view");
 
 const newDeckBtn = homeSection.querySelector(".gallery__new-card-btn");
 
-const currentDecks = decks;
+// STATE (replaces local decks.js data)
+let currentDecks = [];
 
 // ----------------------
 // Deck Rendering
@@ -44,6 +46,7 @@ function createDeckEl(deck) {
     evt.stopPropagation();
 
     const deckIndex = currentDecks.findIndex((d) => d.id === deck.id);
+
     if (deckIndex !== -1) {
       currentDecks.splice(deckIndex, 1);
     }
@@ -94,35 +97,30 @@ function showView(currentSection, displayValue) {
 function showDeckList() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
-
   showView(homeSection, "block");
 }
 
 function showDeckView() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
-
   showView(deckViewSection, "block");
 }
 
 function showAbout() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
-
   showView(aboutSection, "block");
 }
 
 function showNewDeckView() {
   page.classList.remove("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
-
   showView(newDeckSection, "block");
 }
 
 function showNotFound() {
   page.classList.add("page_no-mobile-bar");
   page.classList.remove("page_location_carousel");
-
   showView(notFoundSection, "block");
 }
 
@@ -184,12 +182,31 @@ function handleRoute() {
   showNotFound();
 }
 
-renderAllDecks();
+// ----------------------
+// INIT: Fetch decks from API
+// ----------------------
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      currentDecks = decks;
+      renderAllDecks();
+    })
+    .catch(() => {
+      showError("Can't fetch decks");
+    })
+    .finally(() => {
+      handleRoute();
+    });
+});
 
+// ----------------------
+// Events
+// ----------------------
 if (newDeckBtn) {
   newDeckBtn.addEventListener("click", () => {
     window.location.hash = "#new-deck-view";
   });
 }
+
 window.addEventListener("hashchange", handleRoute);
 window.addEventListener("load", handleRoute);
