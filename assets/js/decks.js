@@ -765,8 +765,13 @@ const decks = [
  * @param {string} deckId - The unique identifier of the deck to retrieve
  * @returns {object|undefined} The deck object if found, undefined otherwise
  */
-function getDeckByID(deckId) {
-  return decks.find((deck) => deck.id === deckId);
+
+// ✅ empty cached array (required)
+export const fetchedDecks = [];
+
+// ✅ FIXED: use "_id" for deck objects
+function getDeckByID(id) {
+  return fetchedDecks.find((deck) => deck._id === id);
 }
 
 export { decks, getDeckByID };

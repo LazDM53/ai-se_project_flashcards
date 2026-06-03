@@ -1,6 +1,6 @@
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { renderDeckView } from "./deckView.js";
-import { getDeckByID } from "./decks.js";
+import { getDeckByID, fetchedDecks } from "./decks.js";
 import { getDecks } from "./api.js";
 import { hexToString, removeColorClasses } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
@@ -26,6 +26,19 @@ const newDeckBtn = homeSection.querySelector(".gallery__new-card-btn");
 let currentDecks = [];
 
 // ----------------------
+// Helpers
+// ----------------------
+function showError(message) {
+  console.error(message);
+
+  const errorEl = document.querySelector(".error");
+  if (errorEl) {
+    errorEl.textContent = message;
+    errorEl.style.display = "block";
+  }
+}
+
+// ----------------------
 // Deck Rendering
 // ----------------------
 function createDeckEl(deck) {
@@ -45,7 +58,7 @@ function createDeckEl(deck) {
     evt.preventDefault();
     evt.stopPropagation();
 
-    const deckIndex = currentDecks.findIndex((d) => d.id === deck.id);
+    const deckIndex = currentDecks.findIndex((d) => d._id === deck._id);
 
     if (deckIndex !== -1) {
       currentDecks.splice(deckIndex, 1);
@@ -53,13 +66,13 @@ function createDeckEl(deck) {
 
     renderAllDecks();
 
-    if (window.location.hash === `#carousel/${deck.id}`) {
+    if (window.location.hash === `#carousel/${deck._id}`) {
       window.location.hash = "#home";
     }
   });
 
   const linkEl = li.querySelector(".card__link");
-  linkEl.href = `#deck/${deck.id}`;
+  linkEl.href = `#deck/${deck._id}`;
   linkEl.setAttribute("aria-label", `Open deck: ${deck.name}`);
 
   return deckEl;
@@ -148,7 +161,7 @@ function handleRoute() {
 
   if (hash.startsWith("deck/")) {
     const [, deckId] = hash.split("/");
-    const currentDeck = currentDecks.find((deck) => deck.id === deckId);
+    const currentDeck = currentDecks.find((deck) => deck._id === deckId);
 
     if (currentDeck) {
       renderDeckView(currentDeck, showDeckView);
@@ -168,7 +181,7 @@ function handleRoute() {
     }
 
     const currentDeck = getDeckByID(deckId);
-    const deckStillExists = currentDecks.some((deck) => deck.id === deckId);
+    const deckStillExists = currentDecks.some((deck) => deck._id === deckId);
 
     if (currentDeck && deckStillExists) {
       renderCarouselView(currentDeck);
@@ -188,6 +201,8 @@ function handleRoute() {
 document.addEventListener("DOMContentLoaded", () => {
   getDecks()
     .then((decks) => {
+      fetchedDecks.push(...decks); //  REQUIRED
+
       currentDecks = decks;
       renderAllDecks();
     })

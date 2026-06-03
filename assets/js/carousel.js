@@ -94,7 +94,7 @@ function renderCarouselView(deck) {
   handleKeydown = (evt) => {
     if (
       carouselSection.style.display === "none" ||
-      window.location.hash !== `#carousel/${deck.id}`
+      window.location.hash !== `#carousel/${deck._id}`
     ) {
       return;
     }

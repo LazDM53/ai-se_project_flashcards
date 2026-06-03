@@ -55,7 +55,7 @@ function renderDeckView(deck, showDeckView) {
   deckViewList.innerHTML = "";
 
   practiceBtn.onclick = () => {
-    window.location.hash = `#carousel/${deck.id}`;
+    window.location.hash = `#carousel/${deck._id}`;
   };
 
   deck.cards.forEach((card) => {
