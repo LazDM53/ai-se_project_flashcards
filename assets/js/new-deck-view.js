@@ -1,4 +1,5 @@
-import { decks } from "./decks.js";
+import { addDeck } from "./api.js";
+import { fetchedDecks } from "./decks.js";
 
 const form = document.querySelector(".new-deck-view__form");
 const submitBtn = document.querySelector(".new-deck-view__submit-btn");
@@ -9,14 +10,6 @@ const errorCloseBtn = document.querySelector(".modal__close-btn");
 const errorMessage = document.querySelector(".modal__error");
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
-
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 function normalizeColor(color) {
   if (!color) return "#64d583";
@@ -96,18 +89,21 @@ form.addEventListener("submit", (e) => {
     }
   }
 
-  const id = `${slugify(name)}-${Date.now()}`;
-
-  const deck = {
-    id,
-    color: colorValue,
+  const newDeckData = {
     name,
+    color: colorValue,
     cards: jsonData.cards,
   };
 
-  decks.push(deck);
-
-  window.location.hash = `deck/${id}`;
+  addDeck(newDeckData)
+    .then((newDeck) => {
+      fetchedDecks.push(newDeck);
+      window.location.hash = `deck/${newDeck._id}`;
+    })
+    .catch((err) => {
+      showError("Failed to create deck");
+      console.error(err);
+    });
 });
 
 export { disableSubmitBtn };
