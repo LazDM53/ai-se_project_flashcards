@@ -32,15 +32,49 @@ I built this app to strengthen front-end development skills such as DOM manipula
 
 ---
 
-## Recent Updates
+🔧 Recent Updates
+Added open deck view for browsing cards inside a deck
+Implemented practice mode carousel with flip functionality
+Built fully responsive layout (mobile + desktop)
+Refactored carousel using CSS Grid
+Fixed event duplication issues in carousel
+Improved routing and navigation handling
+Added mobile UI enhancements (floating buttons, footer behavior)
+🆕 New Updates (API + Architecture Refactor)
+Added new deck creation feature, allowing users to create flashcard decks dynamically through a form
+Integrated a remote REST API, enabling full CRUD operations (create, read, delete decks)
+Implemented error handling using modal dialogs, improving UX by displaying validation and API errors without breaking the UI
+Replaced static/local data with server-synced deck storage
+Added full JSDoc documentation across all major functions for improved readability and maintainability
+⚠️ Error Handling
 
-- Added **open deck view** for browsing cards inside a deck
-- Implemented **practice mode carousel with flip functionality**
-- Built **fully responsive layout** (mobile + desktop)
-- Refactored carousel using **CSS Grid**
-- Fixed event duplication issues in carousel
-- Improved routing and navigation handling
-- Added mobile UI enhancements (floating buttons, footer behavior)
+The application now includes a modal-based error system that displays user-friendly messages when:
+
+Invalid JSON is submitted in the deck creation form
+Deck validation fails (name, structure, or card format issues)
+API requests fail (fetch, create, or delete operations)
+
+This ensures the app remains stable and user-friendly even when errors occur.
+
+🌐 API Integration
+
+This project now communicates with a remote backend API to:
+
+Fetch all flashcard decks
+Add new decks to the database
+Delete existing decks permanently
+
+All changes are reflected in real time and persist across page reloads.
+
+📖 JSDoc Documentation
+
+All major functions in the codebase are fully documented using JSDoc, including:
+
+Function descriptions
+Parameter types
+Return types
+
+This improves maintainability, scalability, and readability of the project.
 
 ---
 
