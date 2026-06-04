@@ -93,5 +93,5 @@ Check out the [live site](https://lazdm53.github.io/ai-se_project_flashcards/) o
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1B3ORAcCnLC1Bnk1pPJ5VStxnyLuBwSk8/view?usp=sharing), where I describe my
+Check out [this video](https://drive.google.com/file/d/1ISSLlGk0pVZ2ERjRJgFu9OYobSE3fwI7/view?usp=drive_link), where I describe my
 project and some challenges I faced while building it.
